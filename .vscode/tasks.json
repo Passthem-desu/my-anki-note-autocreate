@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Push Podman Image",
+            "type": "shell",
+            "command": "${config:terminal.integrated.shell.osx}",
+            "args": [
+                "${workspaceFolder}/scripts/build-and-push-podman.sh"
+            ],
+            "windows": {
+                "command": "pwsh",
+                "args": [
+                    "-File",
+                    "${workspaceFolder}/scripts/build-and-push-podman.ps1"
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "${workspaceFolder}/scripts/build-and-push-podman.sh"
+                ]
+            },
+            "osx": {
+                "command": "bash",
+                "args": [
+                    "${workspaceFolder}/scripts/build-and-push-podman.sh"
+                ]
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Build and push Podman image to gitea.service.jazzwhom.top/kagami-ci/pt-add-word"
+        }
+    ]
+}
