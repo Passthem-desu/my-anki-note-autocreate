@@ -1,0 +1,16 @@
+node_modules
+
+npm-debug.log*
+yarn-error.log*
+.npm
+.yarn
+
+build
+.svelte-kit
+
+.env
+.env.*.local
+.vscode
+
+.git
+.gitignore
