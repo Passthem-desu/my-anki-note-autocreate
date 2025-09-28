@@ -1,38 +1,79 @@
-# sv
+# 单词添加器 (Word Adder)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+一个（差不多算 Vibe Coding 的）基于 SvelteKit 的单词管理工具，支持 AI 自动补全释义并一键添加到 Anki。
 
-## Creating a project
+## 功能特性
 
-If you're seeing this, you've probably already done this step. Congrats!
+- 🤖 **AI 智能补全**：自动获取单词释义、音标和上下文翻译
+- 📚 **Anki 集成**：一键将单词添加到 Anki 记忆卡片
+- 🎨 **现代化界面**：响应式设计，支持移动端和桌面端
+- ⚡ **快速部署**：Docker 一键部署，配置简单
 
-```sh
-# create a new project in the current directory
-npx sv create
+## 技术栈
 
-# create a new project in my-app
-npx sv create my-app
+- **前端**: Svelte 5 + SvelteKit
+- **样式**: Tailwind CSS
+- **后端**: SvelteKit Server Routes
+- **部署**: Docker + Docker Compose
+- **AI**: OpenAI 兼容 API
+
+## 环境变量配置
+
+创建 `.env` 文件并配置以下环境变量：
+
+```env
+# OpenAI 配置
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_MODEL=gpt-4o-mini
+
+# Anki Connect 配置
+ANKI_CONNECT_URL=http://your-anki-host:8765
 ```
 
-## Developing
+### OpenAI 配置说明
+- 支持任何 OpenAI 兼容的 API（如 Ollama、Azure OpenAI、自托管模型等）
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Anki 配置说明
+- 需要安装 [AnkiConnect](https://ankiweb.net/shared/info/2055492159) 插件
+- 确保 Anki 正在运行且 AnkiConnect 插件已启用
+- 需要预先创建名为 "帕，背单词" 的牌组和笔记类型
 
-```sh
+## 快速开始
+
+### 开发环境
+
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Docker 部署
 
-To create a production version of your app:
-
-```sh
-npm run build
+```bash
+docker compose up -d
 ```
 
-You can preview the production build with `npm run preview`.
+### 手动 Docker 运行
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+docker run -d \
+  --name pt-add-word \
+  --restart unless-stopped \
+  -p 20111:3000 \
+  -v $(pwd)/.env:/app/.env:ro \
+  word-adder
+```
+
+## 注意事项
+
+- 确保 `.env` 文件包含所有必需的环境变量
+- Anki 必须在同一网络中可访问（对于 Docker 部署）
+- AI 补全功能依赖于 OpenAI 兼容的 API 服务
+
+## 许可证
+
+MIT
+
+---
+Made with ❤️ using [SvelteKit](https://kit.svelte.dev/) and [Tailwind CSS](https://tailwindcss.com/)

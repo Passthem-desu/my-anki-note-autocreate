@@ -1,0 +1,19 @@
+services:
+  pt-add-word:
+    build: .
+    container_name: pt-add-word
+    restart: unless-stopped
+    ports:
+      - "20111:3000"
+    env_file:
+      - .env
+    environment:
+      - TZ=${TZ:-Asia/Shanghai}
+    networks:
+      - pt-network
+    volumes:
+      - ./.env:/app/.env:ro
+
+networks:
+  pt-network:
+    driver: bridge

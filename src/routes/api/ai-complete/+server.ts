@@ -10,11 +10,11 @@ const OPENAI_MODEL = env.OPENAI_MODEL
 export const POST: RequestHandler = async ({ request }) => {
     const { word, ctx, desc } = await request.json()
 
-    if (!OPENAI_BASE_URL || !OPENAI_MODEL) {
+    if (!OPENAI_API_KEY || !OPENAI_BASE_URL || !OPENAI_MODEL) {
         return json({
             word: word,
             ctx: ctx,
-            desc: "OpenAI 密钥未设置！"
+            desc: "OpenAI 配置未设置完整！请检查 OPENAI_API_KEY、OPENAI_BASE_URL 和 OPENAI_MODEL 环境变量。"
         }, { status: 500 })
     }
 
