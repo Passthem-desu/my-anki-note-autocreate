@@ -11,9 +11,9 @@ The JSON format you should provide is as following:
     "transcription": "[英语音标]",
     "context-definition": "单词在上下文句子中的中文解释和词性",
     "definition": [
-        "[adj.] meaning #1",
-        "[vt.] meaning #2",
-        "[n.][C] meaning #3",
+        "[adj.] meaning #1 in English",
+        "[vt.] meaning #2 in English",
+        "[n.][C] meaning #3 in English",
         "……"
     ]
 }
