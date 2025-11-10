@@ -41,7 +41,10 @@ export const POST: RequestHandler = async ({ request }) => {
   const payload = {
     model: OPENAI_MODEL,
     messages: messages,
-    temperature: 0.7,
+    temperature: 0.3,
+    response_format: {
+      type: "json_object",
+    }
   }
 
   try {
