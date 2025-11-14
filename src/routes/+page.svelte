@@ -10,7 +10,7 @@
 	let word: string = '';
 	let context: string = '';
 	let desc: string = '';
-	let deckName: string = '帕， 背单词';
+	let deckName: string = '帕，背单词';
 
 	// 音频数据
 	let wordAudioUrl: string | null = null;
